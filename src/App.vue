@@ -40,7 +40,7 @@ export default {
       };
 
       window.scrollTo({
-        top: document.body.scrollHeight + 60,
+        top: document.body.scrollHeight,
         behavior: "smooth"
       });
 
@@ -73,15 +73,13 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     width: 100%;
   }
   .footer {
-    // position: sticky;
     position: fixed;
     bottom: 0;
+    left: 0;
     margin-top: 30px;
-    // width: 100%;
   }
 }
 </style>

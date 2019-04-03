@@ -13,7 +13,7 @@ export default {
 <style lang="scss" scoped>
 header {
   text-align: center;
-  padding: 20px;
+  padding: 20px 0;
   font-size: 20px;
   color: #ffffff;
   background: rgb(5, 159, 211);

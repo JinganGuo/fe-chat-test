@@ -110,6 +110,7 @@ export default {
     }
     span {
       line-height: 30px;
+      font-weight: bold;
     }
     .message {
       display: inline;
