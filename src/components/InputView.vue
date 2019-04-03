@@ -1,7 +1,7 @@
 <template>
   <div class="input-view">
     <input v-model="value" type="text" @keyup.enter="sendMessage" placeholder="Please input...">
-    <button @click.enter="sendMessage">Send</button>
+    <button :class="{disabled: disable}" @click.enter="sendMessage">Send</button>
     <button class="clean" @click="cleanMessage">Clean</button>
   </div>
 </template>
@@ -11,16 +11,25 @@ export default {
   name: 'InputView',
   data() {
     return {
-      value: ''
+      value: '',
+      disable: true
     }
   },
   methods: {
     sendMessage() {
+      if (this.disable) {
+        return;
+      }
       this.$emit('handleBtn', this.value);
       this.value = '';
     },
     cleanMessage() {
       this.$emit('handleClean');
+    }
+  },
+  watch: {
+    value: function(val) {
+      this.disable = val.length ? false : true;
     }
   }
 }
@@ -40,8 +49,15 @@ export default {
   button {
     width: 100px;
     background: #059fd3;
+    
     font-size: 16px;
     color: #ffffff;
+  }
+  .disabled {
+    background: gray;
+  }
+  .abled {
+    background: #059fd3;
   }
   .clean {
     font-size: 14px;

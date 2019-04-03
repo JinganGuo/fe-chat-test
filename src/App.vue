@@ -33,16 +33,17 @@ export default {
       const data = new Date().getTime() / 1000;
 
       const newMessage = {
-        avatar: "http://pnzhqn5pf.bkt.clouddn.com/%E8%AF%81%E4%BB%B6%E7%85%A7.jpg",
+        avatar:
+          "http://pnzhqn5pf.bkt.clouddn.com/%E8%AF%81%E4%BB%B6%E7%85%A7.jpg",
         name: "Me",
         text: value,
         time: data
       };
 
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-      });
+      const mainDOM = document.getElementById("main");
+      setTimeout(() => {
+        mainDOM.scrollTop = mainDOM.scrollHeight;
+      }, 100);
 
       this.messageList.push(newMessage);
     },
@@ -50,7 +51,7 @@ export default {
      * 处理清除消息按钮
      */
     handleClean() {
-      const isDelete = confirm('Are u sure clean messages?');
+      const isDelete = confirm("Are u sure clean messages?");
       if (isDelete) {
         this.messageList = [];
       }
@@ -67,18 +68,28 @@ export default {
   padding: 0;
   margin: 0;
 }
+html,
+body {
+  height: 100vh;
+  margin: 0;
+}
 #app {
-  overflow-y: scroll;
+  height: 100vh;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
     width: 100%;
   }
   .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
     margin-top: 30px;
   }
 }

@@ -1,6 +1,7 @@
 <template>
-  <div class="main-view">
+  <div id="main" class="main-view">
     <div class="info" v-for="(item, index) of messageList" :key="index">
+
       <p class="time" v-if="isShowTime(index)">{{ getLocalTime(item.time) }}</p>
 
       <div :class="[item.name === 'Me' ? 'right-side' : 'left-side']">
@@ -10,6 +11,7 @@
         </div>
         <p class="message">{{ item.text }}</p>
       </div>
+
     </div>
   </div>
 </template>
@@ -67,17 +69,20 @@ export default {
       }
       return false;
     }
+  },
+  mounted() {
+    const mainDOM = document.getElementById("main");
+    mainDOM.scrollTop = mainDOM.scrollHeight;
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .main-view {
-  padding: 70px 10px 80px 10px;
-  box-sizing: border-box;
+  flex: 1;
+  overflow-y: scroll;
   .info {
     box-sizing: border-box;
-    padding: 10px 0;
     .time {
       text-align: center;
       font-size: 12px;
@@ -113,10 +118,11 @@ export default {
       font-weight: bold;
     }
     .message {
-      display: inline;
+      display: inline-block;
       border: 1px solid lightblue;
       padding: 5px 10px;
       border-radius: 5px;
+      margin-bottom: 5px;
     }
   }
 }
