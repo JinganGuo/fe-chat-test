@@ -27,20 +27,20 @@ export default {
      * 时间戳转换成标准时间格式
      */
     getLocalTime(timestamp) {
-      var date = new Date(parseInt(timestamp * 1000));
-      var Y = date.getFullYear() + "-";
-      var M =
+      let date = new Date(parseInt(timestamp * 1000));
+      let Y = date.getFullYear() + "-";
+      let M =
         (date.getMonth() + 1 < 10
           ? "0" + (date.getMonth() + 1)
           : date.getMonth() + 1) + "-";
-      var D = date.getDate() + " ";
-      var h =
+      let D = date.getDate() + " ";
+      let h =
         (date.getHours() >= 10 ? date.getHours() : "0" + date.getHours()) + ":";
-      var m =
+      let m =
         (date.getMinutes() >= 10
           ? date.getMinutes()
           : "0" + date.getMinutes()) + ":";
-      var s =
+      let s =
         date.getSeconds() >= 10 ? date.getSeconds() : "0" + date.getSeconds();
       return Y + M + D + h + m + s;
     },
